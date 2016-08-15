@@ -1,0 +1,33 @@
+{
+  "name": "timra",
+  "version": "1.0.0",
+  "description": "Hack for trying out a site idea.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node_modules/.bin/stylus src/css/index.styl -o static/css",
+    "watch-css": "node_modules/.bin/stylus src/css/index.styl -o static/css -w",
+    "clean": "rm -rf static/css && mkdir -p static/css",
+    "build": "npm run clean && npm run build-css",
+    "watch": "npm run clean && npm run watch-css & nodemon server -e js,jade",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersroos/timra.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/andersroos/timra/issues"
+  },
+  "homepage": "https://github.com/andersroos/timra#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.9.2",
+    "stylus": "^0.54.5"
+  }
+}
