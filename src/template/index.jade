@@ -8,5 +8,9 @@ html
         input(value="Search")
     h1 Attractions and Oddities
     div.map(style="height: 500px; width: 100%; border: 1px solid black;")
-      
+    each a in attractions
+      div
+        h2= a.head
+        p= a.desc
+        
   
