@@ -13,6 +13,9 @@ include local.mk
 
 all: build
 
+init-dev-db:
+	node init_dev_db.js
+
 run:
 	npm run clean && nodemon server -e js,jade
 
