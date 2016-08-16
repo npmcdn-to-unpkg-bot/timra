@@ -1,5 +1,7 @@
-html
+html(lang="en")
   head
+    link(rel="stylesheet", href="http://openlayers.org/en/v3.17.1/css/ol.css", type="text/css")
+    script(src="http://openlayers.org/en/v3.17.1/build/ol.js", type="text/javascript")
   body
     div.nav
       div Sign Up
@@ -7,10 +9,22 @@ html
       form
         input(value="Search")
     h1 Attractions and Oddities
-    div.map(style="height: 500px; width: 100%; border: 1px solid black;")
+    div#map.map(style="height: 600px; width: 800px; border: 1px solid black;")
     each a in attractions
       div
         h2= a.head
         p= a.desc
-        
-  
+
+    script(type="text/javascript").
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([17.00, 56.00]),
+          zoom: 3.8
+        })
+      });
