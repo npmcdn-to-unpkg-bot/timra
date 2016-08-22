@@ -17,12 +17,15 @@ app.use(express.static(__dirname + '/static'))
 
 
 app.get('/', function(req, res) {
+    res.send(index({
+        title: 'Home',
+    }))
+})
+
+app.get('/attractions/:xbeg-:xend-:ybeg-:yend', function(req, res) {
     attractions.find().then((docs) => {
-        res.send(index({
-            title: 'Home',
-            attractions: docs
-        }))
-    });
+        res.send(docs);
+    })
 })
 
 app.get('/attraction/*-:id', function(req, res) {
