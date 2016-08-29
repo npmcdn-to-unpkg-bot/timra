@@ -23,10 +23,24 @@ app.get('/', function(req, res) {
 })
 
 app.get('/attractions/:xbeg!:xend!:ybeg!:yend', function(req, res) {
-    attractions.find().then((docs) => {
+
+    // Sort out wrapping of x coordinates.
+    var xbeg = (parseFloat(req.params.xbeg) + 180) % 360 - 180;
+    var xend = (parseFloat(req.params.xend) + 180) % 360 - 180;
+    var ybeg = parseFloat(req.params.ybeg);
+    var yend = parseFloat(req.params.yend);
+
+    var query = {y: {$gte: ybeg, $lte: yend}};
+
+    if (xbeg <= xend)
+        query.x = {$gte: xbeg, $lte: xend};
+    else
+        query.$or = [{x: {$gte: xbeg}}, {x: {$lte: xend}}];
+    
+    attractions.find(query).then((docs) => {
         res.send(docs);
-    })
-})
+    });
+});
 
 app.get('/attraction/*-:id', function(req, res) {
     res.send(index({title: req.params.id}))

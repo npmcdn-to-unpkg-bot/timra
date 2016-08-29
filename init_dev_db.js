@@ -21,20 +21,20 @@ db
                 {
                     head: "Nordanviksstenen",
                     desc: "A glacial erratic which used to be an infamous obstacle for sea men in the viking era.",
-                    x: 60.260599,
-                    y: 18.371433,
+                    x: 18.371433,
+                    y: 60.260599,
                 },
                 {
                     head: "Penis Shaped Water Tower",
                     desc: "Old water tower in Östhammar with an interesting shape.",
-                    x: 60.257914,
-                    y: 18.368581,
+                    x: 18.368581,
+                    y: 60.257914,
                 },
                 {
                     head: "Vasa Museum",
                     desc: "Warship that sunk in 1628 and was salvaged in 1961, now it has its own museum.",
-                    x: 59.327989, 
-                    y: 18.091708,
+                    x: 18.091708,
+                    y: 59.327989, 
                 },
             ])
     })

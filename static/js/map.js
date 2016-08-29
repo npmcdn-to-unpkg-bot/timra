@@ -60,15 +60,15 @@ var map = new ol.Map({
 map.on('moveend', (event) => {
     var map = event.map;
     var extent = map.getView().calculateExtent(map.getSize());
-    var [bottom, left] = ol.proj.transform(ol.extent.getBottomLeft(extent), 'EPSG:3857', 'EPSG:4326');
-    var [top, right] = ol.proj.transform(ol.extent.getTopRight(extent), 'EPSG:3857', 'EPSG:4326');
+    var [left, bottom] = ol.proj.transform(ol.extent.getBottomLeft(extent), 'EPSG:3857', 'EPSG:4326');
+    var [right, top] = ol.proj.transform(ol.extent.getTopRight(extent), 'EPSG:3857', 'EPSG:4326');
     
-    get_json("attractions/" + left + "!" + right + "!" + top + "!" + bottom)
+    get_json("attractions/" + left + "!" + right + "!" + bottom + "!" + top)
         .then(function(data) {
             features.clear();
             for (var i in data) {
                 features.push(new ol.Feature({
-                    geometry: new ol.geom.Point(ol.proj.fromLonLat([data[i].y, data[i].x])),
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([data[i].x, data[i].y])),
                 }));
             }
         })
