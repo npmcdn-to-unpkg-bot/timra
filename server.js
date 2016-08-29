@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
     }))
 })
 
-app.get('/attractions/:xbeg-:xend-:ybeg-:yend', function(req, res) {
+app.get('/attractions/:xbeg!:xend!:ybeg!:yend', function(req, res) {
     attractions.find().then((docs) => {
         res.send(docs);
     })
